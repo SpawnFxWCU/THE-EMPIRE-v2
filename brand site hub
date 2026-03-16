@@ -1,0 +1,80 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { Instagram, Youtube, Twitter, Globe, BookOpen, DollarSign } from "lucide-react";
+
+export default function BrandHub() {
+  const links = [
+    {
+      title: "Instagram",
+      description: "Follow my journey & updates",
+      icon: <Instagram className="w-5 h-5" />,
+      url: "https://instagram.com/Spawn.FX"
+    },
+    {
+      title: "YouTube",
+      description: "Mindset, finance & growth content",
+      icon: <Youtube className="w-5 h-5" />,
+      url: "https://youtube.com"
+    },
+    {
+      title: "Winners Circle University",
+      description: "Courses, mentorship & resources",
+      icon: <BookOpen className="w-5 h-5" />,
+      url: "#"
+    },
+    {
+      title: "Forex MasterMind Accelerator",
+      description: "Learn professional trading",
+      icon: <DollarSign className="w-5 h-5" />,
+      url: "#"
+    },
+    {
+      title: "Website",
+      description: "Official brand website",
+      icon: <Globe className="w-5 h-5" />,
+      url: "#"
+    },
+    {
+      title: "Twitter / X",
+      description: "Thoughts & market insights",
+      icon: <Twitter className="w-5 h-5" />,
+      url: "#"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-6">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-center max-w-xl"
+      >
+        <h1 className="text-4xl font-bold mb-2">Winners Circle</h1>
+        <p className="text-gray-400 mb-8">Your hub for mindset, wealth, and growth.</p>
+
+        <div className="grid gap-4">
+          {links.map((link, index) => (
+            <Card key={index} className="bg-zinc-900 border-zinc-800 hover:bg-zinc-800 transition">
+              <CardContent className="flex items-center justify-between p-4">
+                <div className="flex items-center gap-3">
+                  {link.icon}
+                  <div className="text-left">
+                    <p className="font-semibold">{link.title}</p>
+                    <p className="text-sm text-gray-400">{link.description}</p>
+                  </div>
+                </div>
+                <a href={link.url} target="_blank">
+                  <Button>Open</Button>
+                </a>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <p className="text-xs text-gray-500 mt-8">© {new Date().getFullYear()} Winners Circle</p>
+      </motion.div>
+    </div>
+  );
+}
